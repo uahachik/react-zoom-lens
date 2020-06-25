@@ -1,12 +1,12 @@
 import React, { useState, useLayoutEffect, useRef } from 'react';
-import './App.css';
+import './Zoom.css';
 import Lens from './components/Lens';
 import Cursor from './components/Cursor';
 // import img from './assets/bird-1045954_640.jpg';
 // import img from './assets/tree-5255288__340.jpg';
 import img from './assets/mountains-1412683_640.png';
 
-const App = () => {
+const Zoom = () => {
   const [isLens, switchLens] = useState(false);
   const [image, setImage] = useState(null);
   const imageRef = React.useRef({});
@@ -25,17 +25,17 @@ const App = () => {
   // Use Render Props for Cross-Cutting Concerns
   // render Lens component function to Cursor
   const renderLens = lensPosition => (
-    <Lens lensPosition={lensPosition} lens={{switchLens, image}}/>
+    <Lens lensPosition={lensPosition} zoom={{switchLens, image}}/>
   );
 
   return (
-    <div className="App">
+    <div className="Zoom">
       {isLens
         ? <h6 style={{textAlign: 'center'}}>
             Scroll mouse to zoom image or<br />
             Click It to turn off Lens
           </h6>
-        : <h6>Picture Zooming App</h6>
+        : <h6>Picture Zooming Zoom</h6>
       }
 
       <button
@@ -66,4 +66,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Zoom;

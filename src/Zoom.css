@@ -1,4 +1,4 @@
-.App {
+.Zoom {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -11,7 +11,7 @@
 }
 
 @media (max-width: 762px) {
-	.App {
+	.Zoom {
 		justify-content: unset;
 	}
 }

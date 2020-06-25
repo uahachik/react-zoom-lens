@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Zoom from './Zoom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Zoom />
   </React.StrictMode>,
   document.getElementById('root')
 );

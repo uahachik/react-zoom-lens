@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 let initialLensScrollValue;
 let prevScroll = 1150;
 
-const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
+const Lens = ({ lensPosition, zoom: { switchLens, image } }) => {
   const [lensWidth, setLensWidth] = useState();
   const [lensHeight, setLensHeight] = useState();
   let [ratio, setRatio] = useState(1.38);
