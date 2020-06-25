@@ -1,22 +1,15 @@
 import React, { useState, useLayoutEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
-let initialValue = 0;
-let prevScroll = 530;
+let initialLensScrollValue;
+let prevScroll = 1150;
 
 const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
   const [lensWidth, setLensWidth] = useState();
   const [lensHeight, setLensHeight] = useState();
   let [ratio, setRatio] = useState(1.38);
-  const lensRef = useRef(initialValue);
+  const lensRef = useRef(initialLensScrollValue);
   // console.log(ratio)
-
-  // initial lens scroll value to the bottom 
-  useLayoutEffect(() => {
-    if (lensRef.current && lensRef.current.scrollTop === 0) {
-      initialValue = lensRef.current.scrollTo(0, 530);
-    }
-  }, [])
 
   // lens width and height
   useLayoutEffect(() => {
@@ -79,23 +72,33 @@ const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
   };
 
   // handle ratio
-  const onScrollHandle = () => {
-    // console.log(prevScroll)
-    // console.log(lensRef.current.scrollTop)
-    // console.log(ratio)
-    // let value = 1;
-    const currScroll = lensRef.current.scrollTop;
+  // initial lens scroll value to the bottom 
+  useLayoutEffect(() => {
+    if (lensRef.current && lensRef.current.scrollTop === 0) {
+      initialLensScrollValue = lensRef.current.scrollTo(0, 1150);
+    }
+  }, [])
   
-    if (currScroll < prevScroll) {
+  const onScrollHandle = () => {
+    const currScroll = lensRef.current.scrollTop;
+    // console.log('prevScroll', prevScroll)
+    // console.log('currScroll', currScroll)
+    // console.log('ratio', ratio)
+  
+    if (currScroll < prevScroll && prevScroll - currScroll > 5) {
       prevScroll = currScroll;
-      // console.log('increase')
-      ratio += 0.02;
+      ratio += 0.04;
       setRatio(ratio);
-    } else if (currScroll > prevScroll && ratio > 1.4) {
+    } else if (currScroll > prevScroll && currScroll - prevScroll > 5 && ratio > 1.38) {
       prevScroll = currScroll;
-      // console.log('decrease')
-      ratio -= 0.02;
+      ratio -= 0.04;
       setRatio(ratio);
+    } else if (currScroll > 1029) {
+      setRatio(1.4);
+    }
+
+    if (ratio < 1.4) {
+      lensRef.current.scrollTo(0, 1150)
     }
   }
 
@@ -109,7 +112,7 @@ const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
           onClick={() => switchLens(false)}
           onScroll={onScrollHandle}
         >
-          <div style={{height: 555}} />
+          <div style={{height: 1155}} />
         </div>
       }
     </>
