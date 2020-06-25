@@ -9,11 +9,11 @@ import img from './assets/mountains-1412683_640.png';
 const App = () => {
   const [isLens, switchLens] = useState(false);
   const [image, setImage] = useState(null);
-  const imageRef = React.useRef();
+  const imageRef = React.useRef({});
 
   // get button position to define the lens start position
   const [commutator, setCommutator] = useState({});
-  const buttonRef = useRef();
+  const buttonRef = useRef(null);
 
   useLayoutEffect(() => {
     setCommutator({

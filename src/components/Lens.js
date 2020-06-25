@@ -9,14 +9,13 @@ const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
   const [lensHeight, setLensHeight] = useState();
   let [ratio, setRatio] = useState(1.38);
   const lensRef = useRef(initialLensScrollValue);
-  // console.log(ratio)
 
   // lens width and height
   useLayoutEffect(() => {
     const {current: lens} = lensRef;
     setLensWidth(window.getComputedStyle(lens).width.slice(0, -2));
     setLensHeight(window.getComputedStyle(lens).height.slice(0, -2));
-  }, [])
+  }, []);
 
   // background attributes 
   const backgroundImage = `url( ${image.src} )`;
@@ -77,14 +76,10 @@ const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
     if (lensRef.current && lensRef.current.scrollTop === 0) {
       initialLensScrollValue = lensRef.current.scrollTo(0, 1150);
     }
-  }, [])
+  }, []);
   
   const onScrollHandle = () => {
     const currScroll = lensRef.current.scrollTop;
-    // console.log('prevScroll', prevScroll)
-    // console.log('currScroll', currScroll)
-    // console.log('ratio', ratio)
-  
     if (currScroll < prevScroll && prevScroll - currScroll > 5) {
       prevScroll = currScroll;
       ratio += 0.04;
@@ -96,11 +91,7 @@ const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
     } else if (currScroll > 1029) {
       setRatio(1.4);
     }
-
-    if (ratio < 1.4) {
-      lensRef.current.scrollTo(0, 1150)
-    }
-  }
+  };
 
   return (
     <>
@@ -122,14 +113,12 @@ const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
 Lens.defaultProps = {
   switchLens: () => {},
   image: {},
-  ratio: 0,
 };
 
 Lens.propTypes = {
   lensPosition: PropTypes.object.isRequired,
   switchLens: PropTypes.func,
   image: PropTypes.object,
-  ratio: PropTypes.number,
 };
 
 export default Lens;
