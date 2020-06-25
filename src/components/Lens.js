@@ -7,7 +7,7 @@ let prevScroll = 530;
 const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
   const [lensWidth, setLensWidth] = useState();
   const [lensHeight, setLensHeight] = useState();
-  let [ratio, setRatio] = useState(1.18);
+  let [ratio, setRatio] = useState(1.38);
   const lensRef = useRef(initialValue);
   // console.log(ratio)
 
@@ -91,7 +91,7 @@ const Lens = ({ lensPosition, lens: { switchLens, image } }) => {
       // console.log('increase')
       ratio += 0.02;
       setRatio(ratio);
-    } else if (currScroll > prevScroll && ratio > 1.2) {
+    } else if (currScroll > prevScroll && ratio > 1.4) {
       prevScroll = currScroll;
       // console.log('decrease')
       ratio -= 0.02;

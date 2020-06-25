@@ -3,8 +3,8 @@ import './App.css';
 import Lens from './components/Lens';
 import Cursor from './components/Cursor';
 // import img from './assets/bird-1045954_640.jpg';
-import img from './assets/tree-5255288__340.jpg';
-// import img from './assets/mountains-1412683_640.png';
+// import img from './assets/tree-5255288__340.jpg';
+import img from './assets/mountains-1412683_640.png';
 
 const App = () => {
   const [isLens, switchLens] = useState(false);

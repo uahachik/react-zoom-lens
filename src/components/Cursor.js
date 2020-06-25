@@ -5,7 +5,8 @@ const initialState = (initX, initY) => {
   const initObject = {x: initX - 2, y: initY};
 
   if (window.innerWidth > 762) {
-    return {...initObject, y: initY - 0};
+    // return {...initObject, y: initY - 0};
+    return {...initObject, x: initX + 70, y: initY + 40};
   }
 
   return initObject;
