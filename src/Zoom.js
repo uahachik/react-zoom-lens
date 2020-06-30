@@ -60,7 +60,7 @@ const Zoom = () => {
       <img
         ref={imageRef}
         src={img}
-	alt="an object for zooming"
+	      alt="an object for zooming"
         onLoad={() => setImage(imageRef.current)}
       />
     </div>
