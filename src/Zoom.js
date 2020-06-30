@@ -9,7 +9,7 @@ import img from './assets/mountains-1412683_640.png';
 const Zoom = () => {
   const [isLens, switchLens] = useState(false);
   const [image, setImage] = useState(null);
-  const imageRef = React.useRef({});
+  const imageRef = useRef({});
 
   // get button position to define the lens start position
   const [commutator, setCommutator] = useState({});
@@ -59,7 +59,8 @@ const Zoom = () => {
 
       <img
         ref={imageRef}
-        src={img} alt="an object for zooming"
+        src={img}
+	alt="an object for zooming"
         onLoad={() => setImage(imageRef.current)}
       />
     </div>
